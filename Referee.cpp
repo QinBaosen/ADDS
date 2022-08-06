@@ -1,18 +1,18 @@
 #include "Referee.h"
 
 char Referee::refGame(Human player1, Computer player2){
-    char player1Choice = player1.makeMove();
-    char player2Choice = player2.makeMove();
-    
+    char playerChoice = player1.makeMove();
+    char compChoice = 'R';
+
     // Decide which of the two players wins
     // L = human loses; W = human wins; T = tie
-    if(player1Choice == player2Choice){
+    if(playerChoice == compChoice){
         return 'T';
-    }else if(player1Choice == 'P' && player2Choice == 'R'){
+    }else if(playerChoice == 'R' && compChoice == 'S'){
         return 'W';
-    }else if(player1Choice == 'S' && player2Choice == 'P'){
+    }else if(playerChoice == 'S' && compChoice == 'P'){
         return 'W';
-    }else if(player1Choice == 'R' && player2Choice == 'S'){
+    }else if(playerChoice == 'P' && compChoice == 'R'){
         return 'W';
     }else{
         return 'L';

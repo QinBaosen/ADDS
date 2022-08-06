@@ -1,4 +1,5 @@
 #include "Human.h"
+#include <iostream>
 
 
 char Human::makeMove(){

@@ -4,6 +4,7 @@
 #include "Computer.h"
 
 class Referee{
-    char refGame(Human player1, Computer player2);
+    public:
+        char refGame(Human player1, Computer player2);
 };
 #endif

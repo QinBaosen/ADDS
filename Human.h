@@ -4,6 +4,7 @@
 class Human{
     public:
         char makeMove();
+        
     private:
         char option;
 };

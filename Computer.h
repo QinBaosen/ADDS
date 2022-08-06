@@ -2,7 +2,8 @@
 #define COMPUTER_H
 
 class Computer{
-  char makeMove();
-  
+    public:
+        char makeMove();
+
 };
 #endif
