@@ -13,20 +13,20 @@ void Crescendo::controll(int newCtrl)
     ctrl = newCtrl;
 }
 
-string Crescendo::performMove()
+char Crescendo::performMove()
 {
     // Crescendo moves in the following order: Paper, Scissors, Rock.
     if (ctrl == 0)
     {
-        return "Paper";
+        return 'P';
     }
     else if (ctrl == 1)
     {
-        return "Scissors";
+        return 'S';
     }
     else if (ctrl == 2)
     {
-        return "Rock";
+        return 'R';
     }
     return 0;
 }

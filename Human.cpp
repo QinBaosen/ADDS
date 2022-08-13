@@ -1,16 +1,15 @@
 #include "Player.h"
 #include "Human.h"
-#include <string>
 #include <iostream>
 using namespace std;
 
-Human::Human() : Player("Avalanche") {
+Human::Human() : Player( {
 
 }
 
-string Human::performMove()
+char Human::performMove()
 {
-    string option;
+    char option;
     cout<<"Enter move (R, P, and S) need to capitalize the letters: ";
     cin >> option;
     return option;

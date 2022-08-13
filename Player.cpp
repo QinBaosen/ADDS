@@ -1,17 +1,17 @@
 #include "Player.h"
-#include <string>
+
 #include <iostream>
 using namespace std;
 
 Player::Player(){
 
 }
-Player::Player(string n1)
+Player::Player(char n1)
 {
     name = n1;
 }
 
-string Player::getName()
+char Player::getName()
 {
     return name;
 }
@@ -21,14 +21,14 @@ void Player::controll(int ctrl)
 
 }
 
-void Player::addAnswer(string ans)
+void Player::addAnswer(char ans)
 {
 
 }
 
 string Player::performMove()
 {
-    return " ";
+    return ' ';
 }
 
 Player::~Player(){

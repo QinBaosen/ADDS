@@ -7,13 +7,10 @@
 
 class Tournament {
     public:
-        void addPlayers(Player*);
-        std::string compete();
-        ~Tournament();
-    private:
-        std::vector<Player*> Round1;
-        std::vector<Player*> Round2;
-    std::vector<Player*> Round3;
+        Player * run(array<Player *, 8>  competitors);
+
+
+
 
 };
 #endif

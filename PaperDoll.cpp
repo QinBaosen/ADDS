@@ -1,6 +1,5 @@
 #include "Player.h"
 #include "PaperDoll.h"
-#include <string>
 #include <iostream>
 using namespace std;
 
@@ -13,19 +12,19 @@ void PaperDoll::controll(int newCtrl)
     ctrl = newCtrl;
 }
 
-string PaperDoll::performMove()
+char PaperDoll::performMove()
 {
     if (ctrl == 0)
     {
-    return "Paper";
+    return 'P';
     }
     else if (ctrl == 1)
     {
-    return "Scissors";
+    return 'S';
     }
     else if (ctrl == 2)
     {
-    return "Scissors";
+    return 'S';
     }
     
     return 0; 

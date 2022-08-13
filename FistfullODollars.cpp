@@ -1,6 +1,5 @@
 #include "Player.h"
 #include "FistfullODollars.h"
-#include <string>
 #include <iostream>
 using namespace std;
 
@@ -13,23 +12,23 @@ void FistfullODollars::controll(int newCtrl)
     ctrl = newCtrl;
 }
 
-string FistfullODollars::performMove()
+char FistfullODollars::performMove()
 {
     if (ctrl == 0)
     {
-    return "Rock";
+    return 'R';
     }
     else if (ctrl == 1)
     {
-    return "Paper";
+    return 'P';
     }
     else if (ctrl == 2)
     {
-    return "Paper";
+    return 'P';
     }
     return 0;
 }
 
 FistfullODollars::~FistfullODollars() {
-    
+
 }

@@ -7,14 +7,8 @@ class Referee {
     public:
         Referee();
         ~Referee();
-        std::string getMove(std::string);
-        std::string Fight(Player *p1, Player *p2);
-        
+       char refGame(Human player1, Computer player2);
     
-    
-    private:
-        std::string checkWin(std::string, std::string);
-        bool checkValid(std::string);
 
 };
 #endif

@@ -8,11 +8,11 @@ Bureaucrat::Bureaucrat() : Player("Bureaucrat") {
 
 }
 
-string Bureaucrat::performMove()
+char Bureaucrat::performMove()
 {
     //Bureaucrat always chooses Paper.
 
-    return "Paper";
+    return 'P';
 }
 
 Bureaucrat::~Bureaucrat() {

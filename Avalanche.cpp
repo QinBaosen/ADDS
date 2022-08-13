@@ -8,11 +8,11 @@ Avalanche::Avalanche() : Player("Avalanche") {
 
 }
 
-string Avalanche::performMove()
+char Avalanche::performMove()
 {
     // Avalanche always chooses Rock.
 
-    return "Rock";
+    return 'R';
 }
 
 Avalanche::~Avalanche() {

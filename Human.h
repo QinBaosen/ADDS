@@ -7,7 +7,7 @@
 class Human : public Player {
     public:
         Human();
-        std::string performMove();
+        char performMove();
         ~Human();
     private:
 
