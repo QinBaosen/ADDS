@@ -13,7 +13,7 @@ class Player {
         ~Player();
 
     private:
-    std::string name;
+        std::string name;
 
 };
 #endif

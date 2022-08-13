@@ -9,8 +9,7 @@ class Avalanche: public Player{
         Avalanche();
         std::string performMove();
         ~Avalanche();
-    private:
-        std::string m;
+
 
 };
-#endif 
+#endif

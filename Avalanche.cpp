@@ -5,16 +5,16 @@
 using namespace std;
 
 Avalanche::Avalanche() : Player("Avalanche") {
-    
+
 }
 
 string Avalanche::performMove()
 {
     // Avalanche always chooses Rock.
-    m = "Rock"; 
-    return m;
+
+    return "Rock";
 }
 
 Avalanche::~Avalanche() {
-    
+
 }

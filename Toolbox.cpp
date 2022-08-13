@@ -9,7 +9,7 @@ Toolbox::Toolbox() : Player("Toolbox") {}
 string Toolbox::performMove()
 {
     //Toolbox always chooses Scissors.
-    m = "Scissors";
+    
     return m;
 }
 

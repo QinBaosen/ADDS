@@ -1,10 +1,20 @@
 #ifndef REFEREE_H
 #define REFEREE_H
-#include "Human.h"
-#include "Computer.h"
+#include <string>
+#include "Player.h"
 
-class Referee{
+class Referee {
     public:
-        char refGame(Human player1, Computer player2);
+        Referee();
+        ~Referee();
+        std::string getMove(std::string);
+        std::string Fight(Player *p1, Player *p2);
+        
+    
+    
+    private:
+        std::string checkWin(std::string, std::string);
+        bool checkValid(std::string);
+
 };
 #endif

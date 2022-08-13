@@ -16,7 +16,7 @@ string Player::getName()
     return name;
 }
 
-void Player::setCtr(int ctr)
+void Player::controll(int ctrl)
 {
 
 }
@@ -28,7 +28,7 @@ void Player::addAnswer(string ans)
 
 string Player::performMove()
 {
-    return "";
+    return " ";
 }
 
 Player::~Player(){

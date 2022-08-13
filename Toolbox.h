@@ -9,8 +9,7 @@ class Toolbox : public Player {
     std::string performMove();
     ~Toolbox();
     
-    private:
-    std::string m;
+    
 
 };
 #endif

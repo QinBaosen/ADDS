@@ -3,6 +3,7 @@
 #include "Player.h"
 #include <cstdlib>
 using namespace std;
+
 RandomComputer::RandomComputer() : Player("RandomComputer"){
 
 }
@@ -17,11 +18,11 @@ string RandomComputer::performMove()
     // random number between 1 and 3
     int number = rand() % 3 + 1;
     if (number == 1) {
-    return "Rock";
+        return "Rock";
     } else if (number == 2) {
-    return "Paper";
+        return "Paper";
     } else if (number == 3){
-    return "Scissors";
+        return "Scissors";
     }
 }
 

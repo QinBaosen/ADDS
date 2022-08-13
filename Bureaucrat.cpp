@@ -11,8 +11,8 @@ Bureaucrat::Bureaucrat() : Player("Bureaucrat") {
 string Bureaucrat::performMove()
 {
     //Bureaucrat always chooses Paper.
-    m = "Paper";
-    return m;
+
+    return "Paper";
 }
 
 Bureaucrat::~Bureaucrat() {

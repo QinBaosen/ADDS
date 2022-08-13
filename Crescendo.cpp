@@ -18,15 +18,15 @@ string Crescendo::performMove()
     // Crescendo moves in the following order: Paper, Scissors, Rock.
     if (ctrl == 0)
     {
-    return "Paper";
+        return "Paper";
     }
     else if (ctrl == 1)
     {
-    return "Scissors";
+        return "Scissors";
     }
     else if (ctrl == 2)
     {
-    return "Rock";
+        return "Rock";
     }
     return 0;
 }

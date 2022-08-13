@@ -8,7 +8,7 @@ PaperDoll::PaperDoll() : Player("PaperDoll") {
     ctrl = 0;
 }
 
-void PaperDoll::controll(int newCtr)
+void PaperDoll::controll(int newCtrl)
 {
     ctrl = newCtrl;
 }

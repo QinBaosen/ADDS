@@ -10,7 +10,7 @@ Human::Human() : Player("Avalanche") {
 
 string Human::performMove()
 {
-    string option
+    string option;
     cout<<"Enter move (R, P, and S) need to capitalize the letters: ";
     cin >> option;
     return option;

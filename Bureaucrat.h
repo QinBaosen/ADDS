@@ -9,7 +9,6 @@ class Bureaucrat:public Player{
         Bureaucrat();
         std::string performMove();
         ~Bureaucrat();
-    private:
-        std::string m;
+    
 };
 #endif 
