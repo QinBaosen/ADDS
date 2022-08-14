@@ -1,5 +1,11 @@
-#include "Computer.h"
+#ifndef PLAYER_H
+#define PLAYER_H
 
-char Computer::makeMove(){
-    return 'R';
-}
+class Player{
+    public:
+        Player();
+        char makeMove();
+        ~Player();
+
+};
+#endif
