@@ -16,15 +16,6 @@ char Player::getName()
     return name;
 }
 
-void Player::controll(int ctrl)
-{
-
-}
-
-void Player::addAnswer(char ans)
-{
-
-}
 
 string Player::performMove()
 {
