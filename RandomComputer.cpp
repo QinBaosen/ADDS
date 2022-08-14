@@ -8,10 +8,7 @@ RandomComputer::RandomComputer() : Player("RandomComputer"){
 
 }
 
-void RandomComputer::addAnswer(char c)
-{
-    userAnswers.push_back(c);
-}
+
 
 char RandomComputer::performMove()
 {

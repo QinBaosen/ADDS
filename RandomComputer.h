@@ -6,12 +6,11 @@
 class RandoComputer:public Player{
     public:
         RandomComputer();
-        std::char performMove();
-        void addAnswer(std::char c);
+        char performMove();
+
         ~RandomComputer();
-    private:
-        int handInt;
-        std::vector<std::char> userAnswers;
+
+
 
 };
 #endif

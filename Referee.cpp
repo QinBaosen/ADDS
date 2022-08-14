@@ -10,7 +10,7 @@ using namespace std;
 Referee::Referee() {
 }
 
-char Referee::refGame(Human player1, Computer player2){
+char Referee::refGame(Human player1, Player player2){
     char playerChoice = player1.makeMove();
     char compChoice = player2.makeMove();
 
