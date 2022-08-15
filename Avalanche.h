@@ -1,14 +1,7 @@
-#ifndef AVALANCHE_H
-#define AVALANCHE_H
-#include "Player.h"
+#pragma once
+#include "Computer.h"
+class Avalanche :public Computer {
 
-
-class Avalanche: public Player{
-    public:
-        Avalanche();
-        char performMove();
-        ~Avalanche();
-
-
+public:
+	char makeMove();
 };
-#endif
