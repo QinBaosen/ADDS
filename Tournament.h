@@ -7,9 +7,12 @@
 
 class Tournament {
     public:
+        Tournament();
+        Player *compete(Player* player1,Player *player2);
         Player * run(array<Player *, 8>  competitors);
-
-
+        ~Tournament();
+    private:
+        char judgement;
 
 
 };

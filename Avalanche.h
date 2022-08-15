@@ -1,7 +1,14 @@
-#pragma once
-#include "Computer.h"
-class Avalanche :public Computer {
+#ifndef AVALANCHE_H
+#define AVALANCHE_H
+#include "Player.h"
 
-public:
-	char makeMove();
+
+class Avalanche: public Player{
+    public:
+        Avalanche();
+        char performMove();
+        ~Avalanche();
+
+
 };
+#endif
