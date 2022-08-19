@@ -8,7 +8,7 @@ class Library {
 public:
     Library();
     ~Library();
-    void addDocument(Document *doc);
-    bool hasDocument(Document *doc);
+    void addDocument(Document *doc); // add a Document to the Library
+    bool hasDocument(Document *doc); // check if a Document is in the Library
 };
 #endif
