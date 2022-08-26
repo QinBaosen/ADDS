@@ -1,7 +1,6 @@
 #include "Reverse.h"
 #include <string>
 using namespace std;
-#include <string>
 #include <cmath>
 #include <iostream>
 #include <stdio.h>
@@ -17,16 +16,14 @@ int Reverse::reverseDigit(int value){
         return 0;
     }
 
-    int iResault = 0;
-	static int iPos = 10;
-	if(value/10 == 0)
-	{
-		iPos = 10;
-		return value;
-	}
-	iResault = reverseDigit(value/10) + value % 10 * iPos;
-	iPos *= 10;
-	return iResault;
+    int reverseNumber = 0;
+    while(value > 0){
+        reverseNumber = reverseNumber*10 + value%10;
+         value /= 10;
+    }
+    return reverseNumber;
+
+
 
 }
 
@@ -42,7 +39,7 @@ string Reverse::reverseString(string letters){
         return letters;
     }
 
-	return reverseString(letters.substr( 1))+letters.substr(0,1);
+	return reverseString(letters.substr(1))+letters.substr(0,1);
 
 
 }
