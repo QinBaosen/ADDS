@@ -4,11 +4,19 @@
 #include <vector>
 using namespace std;
 EfficientTruckloads::EfficientTruckloads() {
-    
+
 }
 
 int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
-    vector<int> truckTable(10000, 0);
+    if((numCrates>10000)||(numCrates<2)){
+        cout << "ERROR";
+        return 0;
+    }
+    if((loadSize>(numCrates-1))||(loadSize<1)){
+        cout << "ERROR";
+        return 0;
+    }
+    vector<int> truckTable(10000, -1);
     if (numCrates <= 0 || loadSize <= 0) { // no negative number
         cout << "ERROR" << endl;
         return 0;
