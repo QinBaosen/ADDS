@@ -2,7 +2,7 @@
 using namespace std;
 #include <iostream>
 
-int Truckloads::numTrucks(int numCrates, int ){
+int Truckloads::numTrucks(int numCrates, int loadSize){
     if((numCrates>10000)||(numCrates<2)){
         cout << "ERROR";
         return 0;
