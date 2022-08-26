@@ -3,8 +3,9 @@
 
 class EfficientTruckloads{
     public:
-        int numTrucsks(int numCrates, int loadSize);
-        
+        EfficientTruckloads();
+        int numTrucks(int numCrates, int loadSize);
+
 
 };
 #endif
