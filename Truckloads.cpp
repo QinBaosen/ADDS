@@ -2,13 +2,13 @@
 using namespace std;
 #include <iostream>
 
-int Truckloads::numTrucks(int numCrates, int loadSize){
-    if(numCrates < 2) || (numCrates >1000){
-        cout<<"ERROR ";
-        return -1;
+int Truckloads::numTrucks(int numCrates, int ){
+    if((numCrates>10000)||(numCrates<2)){
+        cout << "ERROR";
+        return 0;
     }
-    if(loadSize < 1) || (loadSize >numCrates - 1){
-        cout<<"ERROR ";
+    if((loadSize>(numCrates-1))||(loadSize<1)){
+        cout << "ERROR";
         return 0;
     }
     if((numCrates <= loadSize) && (numCrates >0)){
