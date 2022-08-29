@@ -7,8 +7,10 @@ int Truckloads::numTrucks(int numCrates, int loadSize){
     if((numCrates <= loadSize) && (numCrates >0)){
         return 1;
     }
-
-    if(numCrates < 1){
+    if (numCrates < 1) {
+        return 0;
+    }
+    if(loadSize < 1){
         return 0;
     }
 
