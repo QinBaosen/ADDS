@@ -9,21 +9,20 @@ EfficientTruckloads::EfficientTruckloads() {
 
 int EfficientTruckloads::numTrucks(int numCrates, int loadSize) {
 
-    vector<int> truckTable(10000, -1);
-    if (numCrates <= 0 || loadSize <= 0) { // no negative number
+    vector<int> truckTable(10001, -1);
+    if (numCrates <1 ) { // no negative number
         cout << "ERROR" << endl;
         return 0;
     }
-
+    if (loadSize < 1) {
+        cout << "ERROR" << endl;
+        return 0;
+    }
     //base case
     if ((numCrates <= loadSize) && (numCrates > 0)) {
         return 1;
     }
 
-
-    if (truckTable.at(numCrates) > 0) {
-        return truckTable.at(numCrates);
-    }
     truckTable.at(numCrates) = numTrucks(numCrates / 2, loadSize) + numTrucks(numCrates - numCrates / 2, loadSize);
     return truckTable.at(numCrates);
 
