@@ -4,6 +4,7 @@
 
 class ReduceMinimum : public ReduceGeneric {
 private:
+    //overridden the derived classes
 	int binaryOperator(int, int);
 };
 

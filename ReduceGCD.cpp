@@ -2,6 +2,7 @@
 using namespace std;
 
 int ReduceGCD::binaryOperator(int num1, int num2) {
+	//greatest common denominator of all the integers in the list
 	if (num1 == 0 || num2 == 0) {
 		return 0;
 	}

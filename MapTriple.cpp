@@ -2,7 +2,7 @@
 
 int MapTriple::f(int x) {
 
-    //value tripled
+    //value will be tripled
 	return 3*x;
 
 }

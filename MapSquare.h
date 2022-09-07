@@ -5,7 +5,7 @@
 class MapSquare : public MapGeneric {
 
 private:
-    //overridden
+    //overridden base class pure virtual funciton
 	int f(int);
 };
 
