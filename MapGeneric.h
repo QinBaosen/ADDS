@@ -1,14 +1,11 @@
-#ifndef __MAPGENERIC_H
-#define __MAPGENERIC_H
-#include <vector>
-//base class
-class MapGeneric{
-    public:
-        //returns the resulting vector after mapping
-        std::vector<int> map(std::vector<int>);
+#ifndef MAPGENERIC_H
+#define MAPGENERIC_H
+#include<vector>
 
-    private:
-        virtual int f(int x)=0; //pure virtual
+class MapGeneric {
+private:
+	virtual int f(int x) = 0;
+public:
+	std::vector<int> map(std::vector<int>);
 };
-
-#endif
+#endif // !MAPGENERIC_H

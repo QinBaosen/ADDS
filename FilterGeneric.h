@@ -5,7 +5,7 @@
 class FilterGeneric {
     private:
         //returns a boolean value
-        virtual bool g(int number) = 0; //pure virtual
+        virtual bool g(int) = 0; //pure virtual
 
     public:
         //returns the resulting vector after filtering
