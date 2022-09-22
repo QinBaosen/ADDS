@@ -33,8 +33,8 @@ int main() {
     Individual* bInd1 = execute(ind1, bf, k1-1);
     Individual* rInd2 = execute(ind2, ra, k2-1);
 
-    cout << bInd1->getString() << " , "
-        << rInd2->getString() << " , "
+    cout << bInd1->getString() << " "
+        << rInd2->getString() << "  "
         << rInd2->getMaxOnes() << endl;
 
     return 0;
