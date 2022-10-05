@@ -3,8 +3,6 @@
 #include "QuickSort.h"
 #include "RecursiveBinarySearch.h"
 #include <iostream>
-#include <string>
-#include <sstream>
 #include <vector>
 using namespace std;
 
@@ -17,34 +15,27 @@ int main(){
     Sample output: false -5 0 3 4 5 100 2014 7777
     */
 
-    vector<int> data;
-    Sort* qs = new QuickSort();
-    data = qs->sort(data);
-    RecursiveBinarySearch* bs = new RecursiveBinarySearch();
-    string str;
-    getline(cin, str);
-    stringstream stringl(str);
-    for (int mid; stringl >> mid;) {
-        data.push_back(mid);
+    vector<int> list;
+    QuickSort q;
+	list = q.sort(list);
+	RecursiveBinarySearch rbs;
+	string mid, str;
+	getline(cin, str);
+	stringstream temp(str);
+	while (temp >> mid)
+		list.push_back(stoi(mid));
+
+	if (rbs.search(list, 1) == true)
+		cout << "true ";
+	else
+		cout << "false ";
+
+	int n = list.size();
+	for (int i = 0; i < ;n; i++) {
+        cout << list.at(i) << " ";
     }
+    cout << endl;
 
-    if (bs->search(data, 1)) {
-        cout << "true ";
 
-    }
-    else {
-        cout << "false ";
-
-    }
-
-    int n = data.size();
-    for (int j = 0; j < n; j++){
-		cout << data[j] << " ";
-
-    }
-	cout << " " << endl;
-
-	delete qs;
-	delete bs;
     return 0;
 }
