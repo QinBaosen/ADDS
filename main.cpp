@@ -4,7 +4,7 @@
 #include "RecursiveBinarySearch.h"
 #include <iostream>
 #include <vector>
-
+using namespace std;
 
 /*Sample input: 1 3 5 4 -5 100 7777 2014
     Sample output: true -5 1 3 4 5 100 2014 7777
@@ -15,7 +15,7 @@
 
 int main()
 {
-    std::vector<int> data;
+    vector<int> list;
 
     int i;
     char c;
@@ -27,8 +27,8 @@ int main()
         if ((c >= '0' && c <= '9') || c == '-')
         {
             ungetc(c, stdin);
-            std::cin >> i;
-            data.push_back(i);
+            cin >> i;
+            list.push_back(i);
         }
 
         if (c == '\n')
@@ -38,14 +38,14 @@ int main()
     }
 
     Sort* s = new QuickSort();
-    data = s->sort(data);
+    list = s->sort(list);
     RecursiveBinarySearch rbs;
-    std::cout << std::boolalpha << rbs.search(data, 1);
+    cout << rbs.search(list, 1);
 
-    for (const auto& d : data)
-    {
-        std::cout << " " << d;
-    }
+    int len = list.size();
+	for (int i = 0; i < len; i++)
+		cout << list[i] << " ";
+	cout << " " << endl;
 
     delete s;
 
