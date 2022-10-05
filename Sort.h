@@ -6,6 +6,6 @@ class Sort{
 
 public:
     //pure virtual function
-	virtual vector<int> sort(vector<int> list) = 0;
+	virtual std::vector<int> sort(std::vector<int> list) = 0;
 };
 #endif
