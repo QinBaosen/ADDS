@@ -40,12 +40,12 @@ int main()
     Sort* s = new QuickSort();
     list = s->sort(list);
     RecursiveBinarySearch rbs;
-    cout << rbs.search(list, 1);
+    cout << boolalpha << rbs.search(list, 1);
 
-    int len = list.size();
-	for (int i = 0; i < len; i++)
-		cout << list[i] << " ";
-	cout << " " << endl;
+    for (const auto& d : list)
+    {
+        cout << " " << d;
+    }
 
     delete s;
 
