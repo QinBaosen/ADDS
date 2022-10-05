@@ -19,8 +19,7 @@ int main()
 
     int num;
     char str;
-    Sort* qs = new QuickSort();
-    RecursiveBinarySearch rbs;
+
     while (1)
     {
         str = getchar();
@@ -37,11 +36,11 @@ int main()
             break;
         }
     }
-    
+
+    Sort* qs = new QuickSort();
     list = qs->sort(list);
-    
+    RecursiveBinarySearch rbs;
     cout << boolalpha << rbs.search(list, 1);
-    
 
     for (const auto& d : list)
     {
