@@ -3,6 +3,7 @@
 #include "QuickSort.h"
 #include "RecursiveBinarySearch.h"
 #include <iostream>
+#include <sstream>
 #include <vector>
 using namespace std;
 
