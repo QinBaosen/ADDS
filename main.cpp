@@ -12,22 +12,6 @@
     Sample input: 0 3 5 4 -5 100 7777 2014
     Sample output: false -5 0 3 4 5 100 2014 7777
     */
-int read()
-{
-    int x = 0;
-    int flag = 1;
-    char c = getchar();
-    while (c != '-' && !(c >= '0' && c <= '9'))c = getchar();
-    if (c == '-')flag = -1;
-    else x = c - '0';
-    c = getchar();
-    while (c >= '0' && c <= '9')
-    {
-        x = x * 10 + c - '0';
-        c = getchar();
-    }
-    return x * flag;
-}
 
 int main()
 {
