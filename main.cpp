@@ -7,40 +7,64 @@
 #include <vector>
 using namespace std;
 
-int main(){
-
-    /*Sample input: 1 3 5 4 -5 100 7777 2014
+/*Sample input: 1 3 5 4 -5 100 7777 2014
     Sample output: true -5 1 3 4 5 100 2014 7777
 
     Sample input: 0 3 5 4 -5 100 7777 2014
     Sample output: false -5 0 3 4 5 100 2014 7777
     */
+int read()
+{
+    int x = 0;
+    int flag = 1;
+    char c = getchar();
+    while (c != '-' && !(c >= '0' && c <= '9'))c = getchar();
+    if (c == '-'){flag = -1;}
+    else x = c - '0';
+    c = getchar();
+    while (c >= '0' && c <= '9')
+    {
+        x = x * 10 + c - '0';
+        c = getchar();
+    }
+    return x * flag;
+}
 
-    Sort* quickSort = new QuickSort();
-    RecursiveBinarySearch* binarySearch = new RecursiveBinarySearch();
+int main()
+{
+    vector<int> data;
 
-    vector<int> num;
+    int i;
+    char c;
 
-    string str;
-    getline(cin, str);
+    while (1)
+    {
+        c = getchar();
 
-    stringstream ss(str);
-    for (int i; ss >> i;) {
-        num.push_back(i);
+        if ((c >= '0' && c <= '9') || c == '-')
+        {
+            ungetc(c, stdin);
+            cin >> i;
+            data.push_back(i);
+        }
+
+        if (c == '\n')
+        {
+            break;
+        }
     }
 
-    num = quickSort->sort(num);
-    if (binarySearch->search(num, 1)) {
-        cout << "true ";
+    Sort* s = new QuickSort();
+    data = s->sort(data);
+    RecursiveBinarySearch rbs;
+    cout << boolalpha << rbs.search(data, 1);
 
-    }
-    else {
-        cout << "false ";
+    for (const auto& d : data)
+    {
+        cout << " " << d;
     }
 
-    int n = num.size();
-    for (int i = 0; i < n; i++) {
-        cout << num.at(i) << " ";
-    }
-    cout << endl;
+    delete s;
+
+    return 0;
 }
