@@ -17,37 +17,38 @@ int main()
 {
     vector<int> list;
 
-    int i;
-    char c;
-
+    int num;
+    char str;
+    Sort* qs = new QuickSort();
+    RecursiveBinarySearch rbs;
     while (1)
     {
-        c = getchar();
+        str = getchar();
 
-        if ((c >= '0' && c <= '9') || c == '-')
+        if ((str >= '0' && str <= '9') || str == '-')
         {
-            ungetc(c, stdin);
-            cin >> i;
-            list.push_back(i);
+            ungetc(str, stdin);
+            cin >> num;
+            list.push_back(num);
         }
 
-        if (c == '\n')
+        if (str == '\n')
         {
             break;
         }
     }
-
-    Sort* s = new QuickSort();
-    list = s->sort(list);
-    RecursiveBinarySearch rbs;
+    
+    list = qs->sort(list);
+    
     cout << boolalpha << rbs.search(list, 1);
+    
 
     for (const auto& d : list)
     {
         cout << " " << d;
     }
 
-    delete s;
+    delete qs;
 
     return 0;
 }
