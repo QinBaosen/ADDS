@@ -3,6 +3,7 @@
 #include "QuickSort.h"
 #include "RecursiveBinarySearch.h"
 #include <iostream>
+#include <sstream>
 #include <vector>
 using namespace std;
 
@@ -20,7 +21,9 @@ int main(){
 	list = q.sort(list);
 	RecursiveBinarySearch rbs;
 	string mid, str;
+
 	getline(cin, str);
+
 	stringstream temp(str);
 	while (temp >> mid)
 		list.push_back(stoi(mid));
@@ -31,7 +34,7 @@ int main(){
 		cout << "false ";
 
 	int n = list.size();
-	for (int i = 0; i < ;n; i++) {
+	for (int i = 0; i < n; i++) {
         cout << list.at(i) << " ";
     }
     cout << endl;
