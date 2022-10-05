@@ -3,7 +3,7 @@
 bool RecursiveBinarySearch::search(std::vector<int> list, int bin)
 {
     int start = 0;
-    int len = list.size() - 1;
+    int len = list.size();
     int mid = (start + len) / 2;
 
     if (len <= start){
@@ -11,23 +11,21 @@ bool RecursiveBinarySearch::search(std::vector<int> list, int bin)
     }
 
     int num = list[mid];
-    while (start <= len)
-    {
 
-        if(num == bin)
-        {
-            return true;
-        }
-        else if (num < bin)
-        {
-            start = mid + 1;
-        }
-        else if (num > bin)
-        {
-            len = mid - 1;
-        }
-
+    if(num == bin){
+        return true;
     }
+    else if (bin < num)
+    {
+        list = vector<int>(list.begin(), list.begin() + mid);
+		return search(list, bin);
+    }
+    else if (bin > num)
+    {
+        list = vector<int>(list.begin() + mid + 1, list.end());
+		return search(list, num);
+    }
+
 
     return false;
 }
