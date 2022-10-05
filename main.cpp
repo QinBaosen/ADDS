@@ -16,29 +16,31 @@ int main(){
     Sample output: false -5 0 3 4 5 100 2014 7777
     */
 
-    vector<int> list;
-    QuickSort q;
-	list = q.sort(list);
-	RecursiveBinarySearch rbs;
-	string mid, str;
+    Sort* quickSort = new QuickSort();
+    RecursiveBinarySearch* binarySearch = new RecursiveBinarySearch();
 
-	getline(cin, str);
+    vector<int> num;
 
-	stringstream temp(str);
-	while (temp >> mid)
-		list.push_back(stoi(mid));
+    string str;
+    getline(cin, str);
 
-	if (rbs.search(list, 1) == true)
-		cout << "true ";
-	else
-		cout << "false ";
+    stringstream ss(str);
+    for (int i; ss >> i;) {
+        num.push_back(i);
+    }
 
-	int n = list.size();
-	for (int i = 0; i < n; i++) {
-        cout << list.at(i) << " ";
+    num = quickSort->sort(num);
+    if (binarySearch->search(num, 1)) {
+        cout << "true ";
+
+    }
+    else {
+        cout << "false ";
+    }
+
+    int n = num.size();
+    for (int i = 0; i < n; i++) {
+        cout << num.at(i) << " ";
     }
     cout << endl;
-
-
-    return 0;
 }
