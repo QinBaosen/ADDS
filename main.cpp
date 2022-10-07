@@ -15,10 +15,16 @@ using namespace std;
 
 int main()
 {
+
+    //takes in a list of integers
     vector<int> list;
 
     int num;
     char str;
+
+    // ascending order first using quick sort
+    Sort* qs = new QuickSort();
+    RecursiveBinarySearch rbs;
 
     while (1)
     {
@@ -37,17 +43,17 @@ int main()
         }
     }
 
-    Sort* qs = new QuickSort();
     list = qs->sort(list);
-    RecursiveBinarySearch rbs;
+
     cout << boolalpha << rbs.search(list, 1);
 
-    for (const auto& d : list)
-    {
-        cout << " " << d;
+
+    //results
+
+    int n = list.size();
+    for (int i = 0; i < n; i++) {
+        cout << list.at(i) << " ";
     }
-
-    delete qs;
-
+    cout << endl;
     return 0;
 }
