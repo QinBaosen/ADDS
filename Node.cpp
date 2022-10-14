@@ -1,27 +1,21 @@
 #include "Node.h"
 using namespace std;
 
-Node::Node(int num, Node * pointer) {
-    data = num;
-    next = pointer;
+Node::Node(){
 }
 
-void Node::setData(int num)
-{
+void Node::setData(int num){
 	data = num;
 }
 
-void Node::setNext(Node* pointer)
-{
+void Node::setNext(Node* pointer){
 	next = pointer;
 }
 
-int Node::getData()
-{
+int Node::getData(){
 	return data;
 }
 
-Node* Node::getNext()
-{
+Node* Node::getNext(){
 	return next;
 }

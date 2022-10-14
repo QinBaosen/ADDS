@@ -3,212 +3,238 @@
 #include <limits> // Necessary Libraries
 using namespace std;
 
+void LinkedList::addFront(int newItem) {
+    // inserts a new node, containing the newItem, at the beginning of the list.
 
-void LinkedList::addFront(int newItem){
-    //inserts a new node, containing the newItem, at the beginning of the list
-	Node* nd = new Node();
-	nd->setData(newItem);
-	nd->setNext(head);
-	head = nd;
-}
-
-void LinkedList::addEnd(int newItem){
-    //inserts a new node, containing the newItem, at the end of the list
-	Node* node = new Node();
+    Node* node = new Node();
 	node->setData(newItem);
+	node->setNext(head);
+	head = node;
 
-	Node* ne = head;
-
-	while (ne->next != NULL) {
-		ne = ne->next;
-	}
-
-	ne->next = node;
 }
 
-void LinkedList::addAtPosition(int position, int newItem){
-    // inserts a new node, containing the newItem
-    // such that it is the position-th member of the list
-	Node* newNode = new Node(newItem, NULL);
+void LinkedList::addEnd(int newItem) {
+    // inserts a new node, containing the newItem, at the end of the list.
 
-	if (position <= 1) {
-		this->addFront(newItem);
-		return;
+	if (!head){
+		head = new Node();
+		head->setData(newItem);
+	}
+	else{
+		Node* node = head;
+		while (node->getNext() != NULL){
+			node = node->getNext();
+		}
+		node->setNext(new Node());
+		node = node->getNext();
+		node->setData(newItem);
 	}
 
-	Node* a;
-	Node* pointer = head;
+}
 
-	for (int i = 0; i < position-1; i++) {
-		a = pointer;
-		pointer = pointer->getNext();
 
-		if (pointer == NULL) {
-			this->addEnd(newItem);
-			return;
+void LinkedList::addAtPosition(int position, int newItem) {
+    //inserts a new node, containing the newItem the position-th member of the list.
+	if(position <= 1) {
+    	addFront(newItem);
+    }
+    else {
+
+    	Node *node = new Node();
+    	node = head;
+   	 	int counter = 1;
+
+    	while ((counter < position -1) && (node->next != NULL)) {
+    		node = node->next;
+    		counter++;
+    	}
+
+    	if (node->next == NULL) {
+    		addEnd(newItem);
+    	} else if (counter == position -1) {
+    		Node* temp = new Node();
+			temp->setData(newItem);
+    		temp->next = node->next;
+    		node->next = temp;
+    	}
+	}
+}
+
+
+int LinkedList::search(int item) {
+    //searches the list for the first instance of the  item
+	bool result = false;
+	int count = 1;
+	Node* n = head;
+	while (n){
+		if (n->getData() == item){
+			result = true;
+			break;
+		}
+		else{
+			++count;
+			n = n->getNext();
 		}
 	}
 
-	a->setNext(newNode);
-	newNode->setNext(pointer);
-}
-
-int LinkedList::search(int item){
-    //searches the list for the first instance of the item
-    int count = 1;
-	Node* n;
-
-    for(n = head; n != NULL; n = n->getNext()){
-        if(item == n->getData()){
-            cout<< count << " ";
-            return count;
-            }
-            count++;
-        }
-
-    cout<< "0 " << endl;
-    return 0;
-}
-
-void LinkedList::deleteFront(){
-    //deletes the first element of the list.
-	if (head  != NULL)
-	{
-		Node* node = head->getNext();
-		delete head;
-		head = node;
-	}else{
-	    return;
+	if (result == true){
+		cout << count << " ";
+		return count;
+	}
+	else{
+		cout << "0 ";
+		return 0;
 	}
 }
 
-void LinkedList::deleteEnd()
-{
-    //deletes the last element of the list
-	if (this->isEmpty()) {
-        return;
-    }
+void LinkedList::deleteFront() {
+    //deletes the first element of the list.
 
-    Node * ptr = NULL;
-    Node * tail = head;
-    while (tail->getNext() != NULL) {
-        ptr = tail;
-        tail = tail->getNext();
-    }
+	if (head != NULL){
+		Node* node = head->getNext();
+		delete head;
+		head = node;
+	}
 
-    ptr->setNext(NULL);
-    delete tail;
-    return;
 }
 
-void LinkedList::deletePosition(int position)
-{
-    //deletes the element at the given position of the list
-	if (this->isEmpty()) {
-        return;
+void LinkedList::deleteEnd() {
+    // deletes the last element of the list.
+	Node* temp1 = head;
+	Node* temp2;
+
+	if (head == NULL) {
+  		return;
+  	}
+
+	while (temp1->next != NULL) {
+		temp2 = temp1;
+		temp1 = temp1->next;
+	}
+
+	if (temp2 != NULL) {
+		temp2->next = NULL;
+	}
+}
+
+
+void LinkedList::deletePosition(int position) {
+    //deletes the element at the given position of the list.If the position < 1
+	//or it is larger than the size of the list, only print ”outside range”.
+	int nr = 1;
+	Node* node = head;
+	while (node)
+	{
+		++nr;
+		node = node->getNext();
+	}
+
+	if (position < 1){
+		cout << "outside range" << endl;
+		return;
+	}
+
+	Node* new_head = nullptr;
+	Node* temp = head;
+	Node* del = nullptr;
+	int nc = 1;
+
+	if (head == nullptr){
+		cout << "outside range" << endl;
+		return;
+	}
+
+	if (position == 1){
+		new_head = temp->getNext();
+
+		delete temp;
+
+		if (new_head == nullptr){
+			head = nullptr;
+		}
+		else{
+			head = new_head;
+		}
+
+		return;
+	}
+
+	nc++;
+
+	while (temp){
+		if (position == nc){
+			del = temp->getNext();
+			temp->setNext(temp->getNext()->getNext());
+			delete del;
+			return;
+		}
+		else{
+			temp = temp->getNext();
+			nc++;
+		}
+	}
+}
+
+
+int LinkedList::getItem(int position) {
+    //prints the value of the item (followed by a space)
+    //and returns the value of the item at the given position of the list
+	int outOfRange = std::numeric_limits < int >::max();
+    if (position < 1) {
+        std::cout << outOfRange << " ";
+        return outOfRange;
     }
 
-    if (position < 1 || position > count) {
-        std::cout << "out of range" << std::endl;
-        return;
-    }
-
-    Node * temp = NULL;
+    Node * get = nullptr;
     Node * ptr = head;
     int count = 0;
-    while (ptr != NULL && count <= position) {
+    while (ptr != nullptr && count <= position) {
         count++;
-        if (count == position-1) {
-            temp = ptr;
+        if (count == position) {
+            get = ptr;
         }
         ptr = ptr->getNext();
     }
 
-    if (temp == NULL || temp->getNext() == NULL) {
-        std::cout << "outside range" << std::endl;
-        return;
+    if (get == nullptr) {
+        std::cout << outOfRange << " ";
+        return outOfRange;
     }
 
-    Node * temp = temp->getNext();
-    temp->setNext(temp->getNext());
-    delete(temp);
-    return;
+    std::cout << get->getData() << " ";
+    return get->getData();
 }
 
-int LinkedList::getItem(int position)
-{
-    //prints the value of the item
-    //returns the value of the item at the given position of the list
-	int num = 1;
+
+void LinkedList::printItems(){
+
+    //prints the value of the items of the list from head to tail
 	Node* node = head;
 	while (node)
 	{
-		++num;
+		cout << node->getData() << " ";
 		node = node->getNext();
 	}
 
-	node = head;
-	for (int i = 1; i <= position; i++)
+}
+LinkedList::LinkedList() {
+    //A constructor with no parameters, which makes an empty list.
+	head = nullptr;
+}
+
+LinkedList::LinkedList(int array[], int size) {
+    //A constructor that takes an array of integers and makes a linked list,
+	//containing all the elements of the array,
+	//in the same order.As the second parameter, it takes the size of the array.
+	for (int i = 0; i < size; i++)
 	{
-		if (i == position)
-		{
-			if (i < num)
-			{
-				if (node)
-				{
-					cout << node->getData() << " ";
-				}
-				else
-				{
-					cout << numeric_limits<int>::max() << " ";
-				}
-			}
-			else
-			{
-				cout << numeric_limits<int>::max() << " ";
-				return numeric_limits<int>::max();
-			}
-		}
-
-		if (node)
-		{
-			node = node->getNext();
-		}
+		addEnd(array[i]);
 	}
+
 }
-
-void LinkedList::printItems()
-{
-    //prints the value of the items of the list from head to tail
-	if (this->isEmpty()) {
-        return;
-    }
-
-    Node * node = head;
-    while (node != NULL) {
-        cout << node->getData() << " ";
-        node = node->getNext();
-    }
-    std::cout << std::endl;
-}
-
-LinkedList::LinkedList(){
-    //no parameters, which makes an empty list
-    head = NULL;
-}
-
-LinkedList::LinkedList(int* newArr, int len)
-{
-	for (int i = 0; i < len; i++)
-	{
-		addEnd(newArr[i]);
-	}
-}
-
-LinkedList::~LinkedList()
-{
-    // A destructor that manually deletes all the elements that are still in the list.
-	while (head != NULL)
+LinkedList::~LinkedList() {
+    //A destructor that manually deletes all the elements that are still in the list.
+	while (head)
 	{
 		deleteEnd();
 	}

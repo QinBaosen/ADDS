@@ -20,7 +20,7 @@ public:
 	int getItem(int position);
 	void printItems();
 	LinkedList();
-	LinkedList(int* newArr, int len);
+	LinkedList(int* array, int size);
 	~LinkedList();
 
 };

@@ -1,21 +1,22 @@
 #ifndef NODE_H
 #define NODE_H
 
-class Node
-{
+class Node{
+
 private:
 	int data;
-	Node* next;
+
 public:
-    Node(int num, Node* pointer);
+    Node();
+	Node* next;
+	void setData(int num);
 
-	void setData(int);
-
-	void setNext(Node*);
+	void setNext(Node* node);
 
 	int getData();
 
     Node* getNext();
 
 };
+
 #endif
