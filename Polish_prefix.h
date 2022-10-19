@@ -4,6 +4,7 @@
 #include <vector>
 
 class Polish_prefix {
+    
 public:
     std::vector<char> opt;
 	std::vector<char> opd;
@@ -13,5 +14,4 @@ public:
 	std::string Calculator(std::vector<std::string>, int);
 
 };
-
 #endif

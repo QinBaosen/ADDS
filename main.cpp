@@ -2,7 +2,7 @@
 using namespace std;
 #include <string>
 #include <cctype>
-#include "Polish_prefix.cpp"
+#include "Polish_prefix.h"
 /*
 Sample input:  * - 5 6 7
 Sample output:  (5 - 6) * 7 = -7
@@ -24,15 +24,15 @@ int main() {
     // get length of expression
     int size = (int)expression.length();
 	for (int i = 0; i < size; i++) {
-
-		if (expression[i] == '+' || expression[i] == '-' || expression[i] == '/' || expression[i] == '*' || isdigit(expression[i])) {
-			string element(1, expression[i]);
-			str.push_back(element);
-		}
-		else if (expression[i] == ' ') {
+	    // expression has blank/space
+        if (expression[i] == ' ') {
 			continue;
 		}
-		else {
+		// operator is a character from +, -, *, and /.
+		else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/' || isdigit(expression[i])) {
+			string element(1, expression[i]);
+			str.push_back(element);
+		}else {
 			cout << "Error" << endl;
 			return 1;
 		}
@@ -41,7 +41,7 @@ int main() {
 	Polish_prefix ppdd;
 	string equation = ppdd.Calculator(str, str.size());
 	// print result
-	cout << equation << endl;
-	return 0;
+	cout << equation <<endl;
+
 
 }
