@@ -45,20 +45,20 @@ int Polish_prefix::preCalc(string num) {
     if (len < 2){
     	return stoi(num);
     }
-	
-    for (int i = num.size()-1; i >= 0; i--) {
+
+    for (int i = len-1; i >= 0; i--) {
         if (ifAccess(num[i])) {
             int operand1 = equation.top();
             equation.pop();
             int operand2 = equation.top();
             equation.pop();
 
-            int temp = operCal(operand1, operand2, num[i]);
-            equation.push(temp);
+            int d1 = operCal(operand1, operand2, num[i]);
+            equation.push(d1);
 
         } else if (num[i] == ' ' && pre){
-            int temp = stoi(head);
-            equation.push(temp);
+            int d1 = stoi(head);
+            equation.push(d1);
             head = "";
             pre = false;
 
@@ -77,7 +77,7 @@ string Polish_prefix::prefixToInfix(string str) {
     stack<string> equation;
     string head = "";
     bool res = false;
-	if (str.size() < 2){
+	if (len < 2){
 		return str;
 	}
 	//Operators (+ - * / )
@@ -104,10 +104,10 @@ string Polish_prefix::prefixToInfix(string str) {
             res = true;
         }
     }
-
    return equation.top();
 }
 
+// check the feasible of string
 bool Polish_prefix::isWork(string str) {
     int co = 0;
     int cn = 0;
