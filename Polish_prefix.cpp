@@ -1,70 +1,141 @@
 #include "Polish_prefix.h"
+#include <cctype>
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
 #include <string>
 
-bool Polish_prefix::ifAccess() {
-    // * - 5 6 7
-    //* 5 6 7
-    //* 5
-    // the number of operator cannot excess or equal the number of operand
-	if (opt.size() == opd.size() - 1) {
-		return true;
-	}else{
-		return false;
-	}
+bool Polish_prefix::ifAccess(char c)
+{
+	//An operator is a character from +, -, *, and /.
+    if (c == '+' || c == '-' || c == '*' || c == '/' ){
+        return true;
+    }else{
+        return false;
+    }
 }
 
-string Polish_prefix::prefixToInfix(vector<string> str, int size) {
-
-	vector<string> equation;
-    //An operator is a character from +, -, *, and /.
-	for (int i = size-1; i >= 0; i--) {
-		if (str[i][0] == '+' || str[i][0] == '-' || str[i][0] == '*' || str[i][0] == '/') {
-
-			string head = equation[0];
-			string tail = equation[1];
-			string equ = head + str[i] + tail;
-            //An operand is a nonnegative integer from 0 to 99
-			if (i != 0 && !((str[i][0] == '+' || str[i][0] == '-') && (str[i - 1][0] == '+' || str[i - 1][0] == '-'))) {
-				equ = "(" + equ + ")";
-			}
-			equation.erase(equation.begin());
-			equation.erase(equation.begin());
-			equation.insert(equation.begin(), equ);
-		}else {
-			equation.insert(equation.begin(), str[i]);
-		}
-
-	}
-
-	return equation[0];
+int Polish_prefix::operCal(int a, int b, char c) {
+	//calculate
+    if (c == '+'){
+       return a + b;
+    }
+    if (c == '-'){
+       return a - b;
+    }
+    if (c == '*'){
+       return a * b;
+    }
+    if (c == '/'){
+       return a / b;
+    }
+    return 0;
 }
 
-void Polish_prefix::createStack(vector<string> str, int size) {
+int Polish_prefix::preCalc(string num) {
 
-    //create a stack
-	for (int i = 0; i < size; i++) {
-		if (str[i][0] == '+' || str[i][0] == '-' || str[i][0] == '/' || str[i][0] == '*') {
-			opt.push_back(str[i][0]);
-		}
-		else if (str[i][0] != '(' && str[i][0] != ')'){
-			opd.push_back(str[i][0]);
-		}
-	}
+	stack<int> equation;
+	string head = "";
+    bool pre = false;
+	//* (+ 5 6) 7
+	//* + 5 6 7
+	//The processing of the product is deferred until its two operands are available
+	int len = num.size();
+    if (len < 2){
+    	return stoi(num);
+    }
+	
+    for (int i = num.size()-1; i >= 0; i--) {
+        if (ifAccess(num[i])) {
+            int operand1 = equation.top();
+            equation.pop();
+            int operand2 = equation.top();
+            equation.pop();
 
+            int temp = operCal(operand1, operand2, num[i]);
+            equation.push(temp);
+
+        } else if (num[i] == ' ' && pre){
+            int temp = stoi(head);
+            equation.push(temp);
+            head = "";
+            pre = false;
+
+        } else if (isdigit(num[i])) {
+            head = num[i] + head;
+            pre = true;
+        }
+    }
+
+    return equation.top();
 }
 
-string Polish_prefix::Calculator(vector<string> str, int size) {
+string Polish_prefix::prefixToInfix(string str) {
 
-    // create a stack to calculate equation
-	this->createStack(str, size);
-	if (this->ifAccess() == false) {
-		return "Error";
+    int len = str.size();
+    stack<string> equation;
+    string head = "";
+    bool res = false;
+	if (str.size() < 2){
+		return str;
 	}
-	// convert the prefix expression to an infix form and output its value
-	string equation = this->prefixToInfix(str, size);
-	//return equation
-	return equation;
+	//Operators (+ - * / )
+	//operand is a nonnegative integer from 0 to 99
+    for (int i = len-1; i >= 0; i--) {
+        if (ifAccess(str[i])) {
+            string operand1 = equation.top();
+            equation.pop();
+            string operand2 = equation.top();
+            equation.pop();
+
+            string eqt = "(" + operand1 + " " + str[i] + " " + operand2 + ")";
+            if (i == 0 || str[i] == '*' || str[i] == '/') eqt =  operand1 + " " + str[i] + " " + operand2;
+
+            equation.push(eqt);
+
+        } else if (str[i] == ' ' && res) {
+            equation.push(head);
+            head = "";
+            res = false;
+
+        } else if (isdigit(str[i])) {
+            head = str[i] + head;
+            res = true;
+        }
+    }
+
+   return equation.top();
+}
+
+bool Polish_prefix::isWork(string str) {
+    int co = 0;
+    int cn = 0;
+    string head = "";
+    bool eqt =  false;
+    for (int i = 0; i < str.size(); i++) {
+        if (!ifAccess(str[i]) && !isdigit(str[i]) && str[i] != ' '){
+        	return false;
+        }
+        if (ifAccess(str[i])){
+        	co++;
+        }else if (str[i] == ' ' && eqt) {
+            if (stoi(head) > 99){
+            	return false;
+            }
+            cn++;
+            eqt = false;
+            head = "";
+        }else if (isdigit(str[i])) {
+            head += str[i];
+            eqt = true;
+        }
+    }
+    if (eqt){
+    	cn++;
+    }
+    if ((cn - co) != 1){
+    	return false;
+    }
+    return true;
 }

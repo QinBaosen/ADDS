@@ -16,32 +16,21 @@ Sample output: Error
 
 int main() {
 
+    // ask a input
+    string input;
+    getline(cin, input);
 
-	string expression;
-	vector<string> str;
-    // get expression
-	getline(cin, expression);
-    // get length of expression
-    int size = (int)expression.length();
-	for (int i = 0; i < size; i++) {
-	    // expression has blank/space
-        if (expression[i] == ' ') {
-			continue;
-		}
-		// operator is a character from +, -, *, and /.
-		else if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/' || isdigit(expression[i])) {
-			string element(1, expression[i]);
-			str.push_back(element);
-		}else {
-			cout << "Error" << endl;
-			return 1;
-		}
-
-	}
-	Polish_prefix ppdd;
-	string equation = ppdd.Calculator(str, str.size());
-	// print result
-	cout << equation <<endl;
-
-
+	Polish_prefix sample;
+	//Check feasible of input
+	bool work =sample.isWork(input);
+	// Execute calculate
+	string equation = sample.prefixToInfix(input);
+    int result = sample.preCalc(input);
+    if (work != false) {
+    	//output
+        cout << equation << " = " << result << endl;
+    } else {
+    	//output
+        cout << "Error" << endl;
+    }
 }
